@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">FixSnap</string>
+    <string name="sign_up_title">إنشاء حساب جديد</string>
+    <string name="sign_up_subtitle">انضم إلينا اليوم واستمتع بتجربة فريدة</string>
+    <string name="sign_in_title">تسجيل الدخول</string>
+    <string name="sign_in_subtitle">مرحباً بك مجدداً، يرجى تسجيل الدخول لحسابك</string>
+    <string name="full_name">الاسم الكامل</string>
+    <string name="age">العمر</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">كلمة المرور</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="sign_up">إنشاء الحساب</string>
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="have_account">لديك حساب بالفعل؟ تسجيل الدخول</string>
+    <string name="dont_have_account">ليس لديك حساب؟ إنشاء حساب جديد</string>
+    <string name="forgot_password">نسيت كلمة المرور؟</string>
+    <string name="welcome_msg">مرحباً بك في FixSnap!</string>
+    <string name="login_success_msg">تم تسجيل الدخول بنجاح. استمتع بتجربة التطبيق.</string>
+    <string name="logout">تسجيل الخروج</string>
+</resources>

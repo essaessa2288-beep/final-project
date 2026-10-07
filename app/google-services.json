@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "121080438188",
+    "project_id": "fixsnap-e6037",
+    "storage_bucket": "fixsnap-e6037.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121080438188:android:de4c61d37621714461ee09",
+        "android_client_info": {
+          "package_name": "com.example.fixsnap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsISuYA63g_E9Y6NYp-f1dXdxBI3ciTpM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
