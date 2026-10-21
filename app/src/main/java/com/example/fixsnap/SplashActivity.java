@@ -9,6 +9,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseUser;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -31,8 +33,14 @@ public class SplashActivity extends AppCompatActivity {
         public void run() {
             try {
                 Thread.sleep(3000);
-                Intent intent = new Intent(SplashActivity.this,SignInActivity.class);
-                startActivity(intent);
+                FirebaseUser firebaseUser = FBReF.auth.getCurrentUser();
+                if( firebaseUser == null ) {
+                    Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
                 finish();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
