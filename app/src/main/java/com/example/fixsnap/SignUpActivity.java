@@ -1,18 +1,24 @@
 package com.example.fixsnap;
 
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
 
 import java.util.Objects;
 
@@ -41,44 +47,61 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp = findViewById(R.id.btnSignUp);
         tvSignIn = findViewById(R.id.tvSignIn);
 
-        btnSignUp.setOnClickListener(v -> {
-            String name = Objects.requireNonNull(etFullName.getText()).toString().trim();
-            String ageStr = Objects.requireNonNull(etAge.getText()).toString().trim();
-            String email = Objects.requireNonNull(etEmail.getText()).toString().trim();
-            String password = Objects.requireNonNull(etPassword.getText()).toString().trim();
-            String confirmPassword = Objects.requireNonNull(etConfirmPassword.getText()).toString().trim();
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = etFullName.getText().toString().trim();
+                String ageStr = etAge.getText().toString().trim();
+                String email = etEmail.getText().toString().trim();
+                String password = etPassword.getText().toString().trim();
+                String confirmPassword = etConfirmPassword.getText().toString().trim();
+                boolean error = false;
+                if (name.isEmpty()) {
+                    etFullName.setError("يرجى إدخال الاسم الكامل");
+                    error = true;
+                }
+                if (ageStr.isEmpty()) {
+                    etAge.setError("يرجى إدخال العمر");
+                    error = true;
+                }
+                if (email.isEmpty()) {
+                    etEmail.setError("يرجى إدخال البريد الإلكتروني");
+                    error = true;
+                }
+                if (password.isEmpty()) {
+                    etPassword.setError("يرجى إدخال كلمة المرور");
+                    error = true;
+                }
+                if (!password.equals(confirmPassword)) {
+                    etConfirmPassword.setError("كلمتا المرور غير متطابقتين");
+                    error = true;
+                }
+                if (!error) {
+                    FBReF.auth.createUserWithEmailAndPassword(password, email).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                String uid = FBReF.auth.getUid();
+                                User user = new User(uid, ageStr, email, password);
+                                FBReF.usersRef.child(uid).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(SignUpActivity.this, "تم إنشاء الحساب بنجاح", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        } else
+                                            Toast.makeText(SignUpActivity.this, "لم يتم إنشاء الحساب بنجاح", Toast.LENGTH_SHORT).show();
+                                    }
 
-            if (name.isEmpty()) {
-                etFullName.setError("يرجى إدخال الاسم الكامل");
-                return;
-            }
-            if (ageStr.isEmpty()) {
-                etAge.setError("يرجى إدخال العمر");
-                return;
-            }
-            if (email.isEmpty()) {
-                etEmail.setError("يرجى إدخال البريد الإلكتروني");
-                return;
-            }
-            if (password.isEmpty()) {
-                etPassword.setError("يرجى إدخال كلمة المرور");
-                return;
-            }
-            if (!password.equals(confirmPassword)) {
-                etConfirmPassword.setError("كلمتا المرور غير متطابقتين");
-                return;
-            }
+                                });
+                            }
 
-            Toast.makeText(SignUpActivity.this, "تم إنشاء الحساب بنجاح", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
-            startActivity(intent);
-            finish();
-        });
 
-        tvSignIn.setOnClickListener(v -> {
-            Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
-            startActivity(intent);
-            finish();
+                        }
+                    });
+                }
+
+            }
         });
     }
-}
+    }

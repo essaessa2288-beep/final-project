@@ -35,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
                 Thread.sleep(3000);
                 FirebaseUser firebaseUser = FBReF.auth.getCurrentUser();
                 if( firebaseUser == null ) {
-                    Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, RoleSelectionActivity.class);
                     startActivity(intent);
                 }else{
                     Intent intent = new Intent(SplashActivity.this, MainActivity.class);

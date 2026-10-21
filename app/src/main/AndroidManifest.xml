@@ -11,6 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FixSnap">
+
+        <activity
+            android:name=".RoleSelectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerSignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerSignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TradespersonSignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TradespersonSignUpActivity"
+            android:exported="false" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />

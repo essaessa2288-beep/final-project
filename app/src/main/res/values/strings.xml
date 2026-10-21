@@ -5,6 +5,7 @@
     <string name="sign_in_title">تسجيل الدخول</string>
     <string name="sign_in_subtitle">مرحباً بك مجدداً، يرجى تسجيل الدخول لحسابك</string>
     <string name="full_name">الاسم الكامل</string>
+    <string name="business_name">الاسم الكامل / اسم الورشة</string>
     <string name="age">العمر</string>
     <string name="email">البريد الإلكتروني</string>
     <string name="password">كلمة المرور</string>
@@ -17,4 +18,22 @@
     <string name="welcome_msg">مرحباً بك في FixSnap!</string>
     <string name="login_success_msg">تم تسجيل الدخول بنجاح. استمتع بتجربة التطبيق.</string>
     <string name="logout">تسجيل الخروج</string>
+
+    <!-- Role Selection & Specific Flows -->
+    <string name="select_role_title">اختر نوع الحساب</string>
+    <string name="select_role_subtitle">حدد كيف ترغب في استخدام تطبيق FixSnap</string>
+    <string name="role_customer">مستخدم (عميل)</string>
+    <string name="role_customer_desc">ابحث عن الفنيين وأصحاب الصنائع لإصلاح طلباتك بسهولة</string>
+    <string name="role_tradesperson">ذو صنعة (حرفي / فني)</string>
+    <string name="role_tradesperson_desc">اعرض خدماتك واستقبل طلبات العملاء في منطقتك</string>
+
+    <string name="customer_sign_in_title">تسجيل دخول المستخدم</string>
+    <string name="tradesperson_sign_in_title">تسجيل دخول ذو الصنعة</string>
+    <string name="customer_sign_up_title">تسجيل حساب مستخدم جديد</string>
+    <string name="tradesperson_sign_up_title">تسجيل حساب ذو صنعة جديد</string>
+
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="location_area">المنطقة / المدينة</string>
+    <string name="profession_category">تخصص الصنعة (مثل: كهرباء، سباكة، صيانة&#8230;)</string>
+    <string name="service_area">نطاق أو منطقة الخدمة</string>
 </resources>
